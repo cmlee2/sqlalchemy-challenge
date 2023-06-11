@@ -46,9 +46,10 @@ def welcome():
         f"/api/v1.0/precipitation <br/>"
         f"/api/v1.0/stations <br/>"
         f"/api/v1.0/tobs <br/>"
-        f"</api/v1.0/<start> <br/>"
-        f"</api/v1.0/<start>/<end> <br/>"
+        f"/api/v1.0/start <br/>"
+        f"/api/v1.0/start/end <br/>"
     )
+
 app.route("/api/v1.0/precipitation")
 def precipitation():
     """Return last 12 months of query analysis for preciptation analysis"""
@@ -123,7 +124,7 @@ def tobs():
 
     return jsonify(all_last_year)
 
-app.route("</api/v1.0/<start>")
+app.route("/api/v1.0/<start>")
 def start(start):
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -149,7 +150,7 @@ def start(start):
     return jsonify(temp_list)
 
 
-app.route("</api/v1.0/<start>/<end>")
+app.route("/api/v1.0/<start>/<end>")
 def start_end(start, end):
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -174,4 +175,7 @@ def start_end(start, end):
         temp_list.append(end_temp)
     
     return jsonify(temp_list)
+
+if __name__ == "__main__":
+    app.run(debug=True)
     
