@@ -82,6 +82,7 @@ def precipitation():
 
 @app.route("/api/v1.0/stations")
 def stations():
+    """Return a JSON list of stations from dataset"""
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
@@ -101,6 +102,7 @@ def stations():
 
 @app.route("/api/v1.0/tobs")
 def tobs():
+    """Return a JSON list of dates and temperatures of the most active station for the previous year"""
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
@@ -127,6 +129,7 @@ def tobs():
 
 @app.route("/api/v1.0/<start>")
 def start(start):
+    """Return a JSON list of the minimum temperature, the maximum temperature, and the average temperature with consideration to specified start date"""
     # Create our session (link) from Python to the DB
     session = Session(engine)
     
@@ -153,6 +156,7 @@ def start(start):
 
 @app.route("/api/v1.0/<start>/<end>")
 def start_end(start, end):
+    """Return a JSON list of the minimum temperature, the maximum temperature, and the average temperature with consideration to specified start and end date"""
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
